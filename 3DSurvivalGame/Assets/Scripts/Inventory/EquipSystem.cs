@@ -20,6 +20,8 @@ public class EquipSystem : MonoBehaviour
     // -- PlayerHolder --//
     public GameObject toolHolder;
 
+    public GameObject selectedItemModel;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,31 +47,31 @@ public class EquipSystem : MonoBehaviour
 
     private void CheckInput()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeTextColor(1);
         }
-        else if (Input.GetKey(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ChangeTextColor(2);
         }
-        else if (Input.GetKey(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ChangeTextColor(3);
         }
-        else if (Input.GetKey(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ChangeTextColor(4);
         }
-        else if (Input.GetKey(KeyCode.Alpha5))
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             ChangeTextColor(5);
         }
-        else if (Input.GetKey(KeyCode.Alpha6))
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             ChangeTextColor(6);
         }
-        else if (Input.GetKey(KeyCode.Alpha7))
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             ChangeTextColor(7);
         }
@@ -118,6 +120,12 @@ public class EquipSystem : MonoBehaviour
                     selectedItem = null;
                 }
 
+                if (selectedItemModel != null)
+                {
+                    DestroyImmediate(selectedItemModel.gameObject);
+                    selectedItemModel = null;
+                }
+
                 // Change color
                 foreach (Transform child in numberHolder.transform)
                 {
@@ -130,10 +138,16 @@ public class EquipSystem : MonoBehaviour
 
     private void SetEquippedModel(GameObject selectedItem)
     {
+        if (selectedItemModel != null)
+        {
+            DestroyImmediate(selectedItemModel.gameObject);
+            selectedItemModel = null;
+        }
+
         string selectedItemName = selectedItem.name.Replace("Clone", "");
-        GameObject itemModel = Instantiate(Resources.Load<GameObject>(selectedItemName + "_Model"),
+        selectedItemModel = Instantiate(Resources.Load<GameObject>(selectedItemName + "_Model"),
             new Vector3(0.3f, 0.8f, 1f), Quaternion.Euler(0, -110f, 90f));
-        itemModel.transform.SetParent(toolHolder.transform, false);
+        selectedItemModel.transform.SetParent(toolHolder.transform, false);
     }
 
     private GameObject GetSelectedItem(int slotNumber)
