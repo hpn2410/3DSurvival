@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTrashable: 1
   thisName: Stick
-  thisDescription: Gather when a tree fall down
+  thisDescription: Can be picked up on the ground
   thisFunctionality: Use for crafting
   isConsumable: 0
   healthEffect: 10

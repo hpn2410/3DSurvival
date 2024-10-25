@@ -13,6 +13,8 @@ public class SelectionManager : MonoBehaviour
     public bool cursorTarget = false;
     public Image centerDotIcon;
     public Image handIcon;
+    public GameObject selectedTree;
+    public GameObject chopHolder;
 
     // Design pattern (Singleton)
     public static SelectionManager Instance { get; set; }
@@ -43,6 +45,27 @@ public class SelectionManager : MonoBehaviour
             var selectionTransform = hit.transform;
 
             InteractableObject interactableObject = selectionTransform.GetComponent<InteractableObject>();
+
+            ChopableObject choppableTree = selectionTransform.GetComponent<ChopableObject>();
+
+            if (choppableTree && choppableTree.playerInRange)
+            {
+                choppableTree.canBeDropped = true;
+                selectedTree = choppableTree.gameObject;
+                chopHolder.gameObject.SetActive(true);
+                cursorTarget = true;
+            }
+            else
+            {
+                if (selectedTree != null)
+                {
+                    selectedTree.gameObject.GetComponent<ChopableObject>().canBeDropped = false;
+                    selectedTree = null;
+                    chopHolder.gameObject.SetActive(false);
+                    cursorTarget = false;
+                }
+            }
+
 
             if (interactableObject && interactableObject.playerInRange)
             {

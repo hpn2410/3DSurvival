@@ -95,11 +95,16 @@ public class InventorySystem : MonoBehaviour
 
     public void AddItemToInventory(string itemName)
     {
-            slotToEquip = FindEmptySlot();
-            itemToAdd = Instantiate(Resources.Load<GameObject>(itemName),
+        slotToEquip = FindEmptySlot();
+
+        string nameChange = itemName.Replace("Clone", "");
+
+        itemToAdd = Instantiate(Resources.Load<GameObject>(nameChange),
                 slotToEquip.transform.position, slotToEquip.transform.rotation);
-            itemToAdd.transform.SetParent(slotToEquip.transform);
-            itemLists.Add(itemName);
+
+        itemToAdd.transform.SetParent(slotToEquip.transform);
+
+        itemLists.Add(itemName);
 
         Sprite itemSprite = itemToAdd.GetComponent<Image>().sprite;
         PickupAlert(itemName, itemSprite);
