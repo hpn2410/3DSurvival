@@ -62,6 +62,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2596960326166239645}
     m_Modifications:
+    - target: {fileID: 1575582052729250503, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575582052729250503, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
+      propertyPath: m_Size.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685597418594965674, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685597418594965674, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
+      propertyPath: m_Size.z
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5602636388049339016, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
       propertyPath: m_Name
       value: Deciduous_tree1
