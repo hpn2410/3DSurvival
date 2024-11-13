@@ -109,6 +109,7 @@ public class InventorySystem : MonoBehaviour
         Sprite itemSprite = itemToAdd.GetComponent<Image>().sprite;
         PickupAlert(itemName, itemSprite);
 
+        SoundManager.Instance.PlaySound(SoundManager.Instance.pickUpItemSound);
         RecaculateList();
         CraftingSystem.Instance.RefreshNeededItems();
     }
@@ -178,18 +179,16 @@ public class InventorySystem : MonoBehaviour
         return new GameObject();
     }
 
-    public bool CheckIfFull()
+    public bool CheckSlotsAvailable(int emptyNeeded)
     {
-        int counter = 0;
+        int emptySlot = 0;
         foreach (GameObject slot in slotLists)
         {
-            if(slot.transform.childCount > 0)
-            {
-                counter++;
-            }
+            if(slot.transform.childCount == 0)
+                emptySlot++;
         }
 
-        if(counter == 21)
+        if(emptySlot >= emptyNeeded)
             return true;
         return false;
     }

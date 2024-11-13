@@ -35,13 +35,13 @@ public class EquipableItem : MonoBehaviour
             && !CraftingSystem.Instance.isOpen && canHit)
         {
             GameObject selectedTree = SelectionManager.Instance.selectedTree;
-
             if (selectedTree != null)
             {
                 selectedTree.GetComponent<ChopableObject>().GetHit();
+                SoundManager.Instance.PlaySound(SoundManager.Instance.chopSound);
             }
-
             animatorItem.SetTrigger("Hit");
+            SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);
         }
     }
 }

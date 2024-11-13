@@ -11,15 +11,18 @@ public class ChopableObject : MonoBehaviour
     public bool canBeDropped;
 
     // tree properties
-    public float treeMaxHealth;
-    public float treeHeath;
+    private float treeMaxHealth;
+    private float treeHeath;
     public Animator treeAnim;
 
-    public float staminaSpentForChopping = 10;
+    //public float staminaSpentForChopping = 10;
+
+    public TreeData m_TreeData;
 
     private void Start()
     {
-        treeHeath = treeMaxHealth;
+        treeHeath = m_TreeData.m_TreeCurrentHealth;
+        treeMaxHealth = m_TreeData.m_TreeMaxHealth;
         treeAnim = transform.parent.transform.parent.GetComponent<Animator>();
     }
 
@@ -58,8 +61,8 @@ public class ChopableObject : MonoBehaviour
         EquipableItem.Instance.canHit = false;
         yield return new WaitForSeconds(0.65f);
         treeAnim.SetTrigger("Shake");
-        treeHeath -= 2;
-        Player_State.Instance.currentStamina -= staminaSpentForChopping;
+        treeHeath -= m_TreeData.m_TreeGetHitDamage;
+        Player_State.Instance.currentStamina -= m_TreeData.m_StaminaSpentForChopping;
         EquipableItem.Instance.canHit = true;
 
         if (treeHeath <= 0)

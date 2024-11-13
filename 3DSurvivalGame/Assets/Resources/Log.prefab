@@ -122,6 +122,6 @@ MonoBehaviour:
   healthEffect: 10
   staminaEffect: 100
   hydrationEffect: 2
-  isEquipable: 1
+  isEquipable: 0
   isInsideQuickSlot: 0
   isSelected: 0

@@ -30,8 +30,10 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // --- Equipping --- //
     public bool isEquipable;
     private GameObject itemPendingEquipping;
+    public GameObject itemPendingToBeUsed;
     public bool isInsideQuickSlot;
     public bool isSelected;
+    public bool isUseAble;
 
 
     private void Start()
@@ -90,9 +92,41 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 EquipSystem.Instance.AddToQuickSlots(gameObject);
                 isInsideQuickSlot = true;
             }
-        }
 
-        
+            if(isUseAble)
+            {
+                itemPendingToBeUsed = gameObject;
+                UseItem();
+            }
+        }
+    }
+
+    private void UseItem()
+    {
+        itemInfoUI.SetActive(false);
+
+        InventorySystem.Instance.isOpen = false;
+        InventorySystem.Instance.inventoryScreenUI.SetActive(false);
+
+        CraftingSystem.Instance.isOpen = false;
+        CraftingSystem.Instance.craftingScreenUI.SetActive(false);
+        CraftingSystem.Instance.toolScreenUI.SetActive(false);
+        CraftingSystem.Instance.survivalScreenUI.SetActive(false);
+        CraftingSystem.Instance.refineScreenUI.SetActive(false);
+        CraftingSystem.Instance.buildingScreenUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        SelectionManager.Instance.EnableSelection();
+        SelectionManager.Instance.enabled = true;
+
+        switch(gameObject.name)
+        {
+            case "Foundation(Clone)":
+
+                break;
+        }
     }
 
     // Triggered when the mouse button is released over the item that has this script.
@@ -101,6 +135,13 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             if (isConsumable && itemPendingConsumption == gameObject)
+            {
+                DestroyImmediate(gameObject);
+                InventorySystem.Instance.RecaculateList();
+                CraftingSystem.Instance.RefreshNeededItems();
+            }
+
+            if(isUseAble && itemPendingToBeUsed == gameObject)
             {
                 DestroyImmediate(gameObject);
                 InventorySystem.Instance.RecaculateList();

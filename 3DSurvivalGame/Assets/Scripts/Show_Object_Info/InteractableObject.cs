@@ -18,7 +18,7 @@ public class InteractableObject : MonoBehaviour
             && SelectionManager.Instance.cursorTarget
             && SelectionManager.Instance.selectedObject == gameObject)
         {
-            if(!InventorySystem.Instance.CheckIfFull())
+            if(InventorySystem.Instance.CheckSlotsAvailable(1))
             {
                 Debug.Log("You picked " + itemName);
                 InventorySystem.Instance.AddItemToInventory(itemName);
