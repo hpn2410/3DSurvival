@@ -30,7 +30,6 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // --- Equipping --- //
     public bool isEquipable;
     private GameObject itemPendingEquipping;
-    public GameObject itemPendingToBeUsed;
     public bool isInsideQuickSlot;
     public bool isSelected;
     public bool isUseAble;
@@ -95,7 +94,8 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
             if(isUseAble)
             {
-                itemPendingToBeUsed = gameObject;
+                ConstructionManager.Instance.itemToBeDestroyed = gameObject;
+                gameObject.SetActive(false);
                 UseItem();
             }
         }
@@ -124,7 +124,28 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         switch(gameObject.name)
         {
             case "Foundation(Clone)":
-
+                ConstructionManager.Instance.ActivateConstructionPlacement("FoundationModel");
+                break;
+            case "Foundation":
+                ConstructionManager.Instance.ActivateConstructionPlacement("FoundationModel");
+                break;
+            case "Wall(Clone)":
+                ConstructionManager.Instance.ActivateConstructionPlacement("WallModel");
+                break;
+            case "Wall":
+                ConstructionManager.Instance.ActivateConstructionPlacement("WallModel");
+                break;
+            case "Door(Clone)":
+                ConstructionManager.Instance.ActivateConstructionPlacement("DoorModel");
+                break;
+            case "Door":
+                ConstructionManager.Instance.ActivateConstructionPlacement("DoorModel");
+                break;
+            case "Window(Clone)":
+                ConstructionManager.Instance.ActivateConstructionPlacement("WindowModel");
+                break;
+            case "Window":
+                ConstructionManager.Instance.ActivateConstructionPlacement("WindowModel");
                 break;
         }
     }
@@ -135,13 +156,6 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             if (isConsumable && itemPendingConsumption == gameObject)
-            {
-                DestroyImmediate(gameObject);
-                InventorySystem.Instance.RecaculateList();
-                CraftingSystem.Instance.RefreshNeededItems();
-            }
-
-            if(isUseAble && itemPendingToBeUsed == gameObject)
             {
                 DestroyImmediate(gameObject);
                 InventorySystem.Instance.RecaculateList();

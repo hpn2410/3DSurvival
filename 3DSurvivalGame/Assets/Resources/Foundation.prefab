@@ -117,11 +117,13 @@ MonoBehaviour:
   isTrashable: 1
   thisName: Foundation
   thisDescription: Can be craft by plank
-  thisFunctionality: Use for crafting
+  thisFunctionality: RIGHT-CLICK to position the item
   isConsumable: 0
   healthEffect: 0
   staminaEffect: 0
   hydrationEffect: 0
   isEquipable: 0
+  itemPendingToBeUsed: {fileID: 0}
   isInsideQuickSlot: 0
   isSelected: 0
+  isUseAble: 1

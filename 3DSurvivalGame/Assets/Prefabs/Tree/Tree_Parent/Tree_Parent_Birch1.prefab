@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8410832301629277058}
   m_Layer: 0
   m_Name: Tree_Parent_Birch1
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6977754060993260923, guid: b55f67f56ee732e4083345fa8d71f854, type: 3}
+      propertyPath: m_TreeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0604c38acfbd1f84592ec5453b621a8e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

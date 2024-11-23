@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4074297271966418766}
   m_Layer: 0
   m_Name: Tree_Parent_Decidous1
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +62,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2596960326166239645}
     m_Modifications:
+    - target: {fileID: 114478923154058540, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
+      propertyPath: m_TreeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0604c38acfbd1f84592ec5453b621a8e, type: 2}
     - target: {fileID: 1575582052729250503, guid: 9f82411d87b250842a66a83ead8d3df6, type: 3}
       propertyPath: m_Size.x
       value: 5

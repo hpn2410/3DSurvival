@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7731354327948443070}
   m_Layer: 0
   m_Name: Tree_Parent_Decidous4
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2257075817972933762, guid: b794c54080d5ae54bb7967a2a66a5d49, type: 3}
+      propertyPath: m_TreeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0604c38acfbd1f84592ec5453b621a8e, type: 2}
     - target: {fileID: 2475626540409278177, guid: b794c54080d5ae54bb7967a2a66a5d49, type: 3}
       propertyPath: m_Name
       value: Deciduous_tree4

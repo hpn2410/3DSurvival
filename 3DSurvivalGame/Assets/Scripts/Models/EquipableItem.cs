@@ -32,7 +32,8 @@ public class EquipableItem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) 
             && !InventorySystem.Instance.isOpen
-            && !CraftingSystem.Instance.isOpen && canHit)
+            && !CraftingSystem.Instance.isOpen && canHit
+            && !ConstructionManager.Instance.inConstructionMode)
         {
             GameObject selectedTree = SelectionManager.Instance.selectedTree;
             if (selectedTree != null)
