@@ -1977,6 +1977,7 @@ MonoBehaviour:
   ghostSemiTransparentMat: {fileID: 2100000, guid: b6899b03246d31a439ac3929b33bf90a, type: 2}
   ghostFullTransparentMat: {fileID: 2100000, guid: 546da47a732c78e4cbf90836cc2fb351, type: 2}
   allGhostsInExistence: []
+  itemToBeDestroyed: {fileID: 0}
 --- !u!1 &353557356
 GameObject:
   m_ObjectHideFlags: 0
@@ -7975,6 +7976,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005007945}
   m_CullTransparentMesh: 1
+--- !u!1 &1019144613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019144614}
+  m_Layer: 5
+  m_Name: ContructionModeUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1019144614
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019144613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1929237116}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1022604826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14935,6 +14971,7 @@ RectTransform:
   - {fileID: 2031453845}
   - {fileID: 1656747771}
   - {fileID: 279537578}
+  - {fileID: 1019144614}
   m_Father: {fileID: 1758874074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
