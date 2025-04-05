@@ -24,7 +24,7 @@ TagManager:
   - Ground
   - Equipable
   - Post-Processing
-  - 
+  - Item
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 3046144681
     locked: 0
