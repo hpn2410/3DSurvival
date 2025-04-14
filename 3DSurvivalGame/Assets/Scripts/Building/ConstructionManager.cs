@@ -148,24 +148,32 @@ public class ConstructionManager : MonoBehaviour
 
         if (itemToBeConstructed != null && inConstructionMode)
         {
-            if (CheckValidConstructionPosition())
+            if(itemToBeConstructed.name == "FoundationModel")
             {
-                isValidPlacement = true;
-                itemToBeConstructed.GetComponent<Constructable>().SetValidColor();
+                if (CheckValidConstructionPosition())
+                {
+                    isValidPlacement = true;
+                    itemToBeConstructed.GetComponent<Constructable>().SetValidColor();
+                }
+                else
+                {
+                    isValidPlacement = false;
+                    itemToBeConstructed.GetComponent<Constructable>().SetInvalidColor();
+                }
             }
-            else
-            {
-                isValidPlacement = false;
-                itemToBeConstructed.GetComponent<Constructable>().SetInvalidColor();
-            }
-
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 var selectionTransform = hit.transform;
-                if (selectionTransform.gameObject.CompareTag("ghost"))
+                if (selectionTransform.gameObject.CompareTag("ghost") && itemToBeConstructed.name == "FoundationModel")
+                {
+                    itemToBeConstructed.SetActive(false);
+                    selectingAGhost = true;
+                    selectedGhost = selectionTransform.gameObject;
+                }
+                else if(selectionTransform.gameObject.CompareTag("wallGhost") && itemToBeConstructed.name == "WallModel")
                 {
                     itemToBeConstructed.SetActive(false);
                     selectingAGhost = true;
@@ -174,6 +182,7 @@ public class ConstructionManager : MonoBehaviour
                 else
                 {
                     itemToBeConstructed.SetActive(true);
+                    selectedGhost = null;
                     selectingAGhost = false;
                 }
 
@@ -183,7 +192,7 @@ public class ConstructionManager : MonoBehaviour
         // Left Mouse Click to Place item
         if (Input.GetMouseButtonDown(0) && inConstructionMode)
         {
-            if (isValidPlacement && selectedGhost == false) // We don't want the freestyle to be triggered when we select a ghost.
+            if (isValidPlacement && selectedGhost == false && itemToBeConstructed.name == "FoundationModel") // We don't want the freestyle to be triggered when we select a ghost.
             {
                 PlaceItemFreeStyle();
                 DestroyItem(itemToBeDestroyed);
@@ -222,21 +231,28 @@ public class ConstructionManager : MonoBehaviour
         itemToBeConstructed.transform.position = ghostPosition;
         itemToBeConstructed.transform.rotation = ghostRotation;
 
-        // Making the Ghost Children to no longer be children of this item
-        itemToBeConstructed.GetComponent<Constructable>().ExtractGhostMembers();
-        // Setting the default color/material
-        itemToBeConstructed.GetComponent<Constructable>().SetDefaultColor();
-        itemToBeConstructed.tag = "placedFoundation";
-
         // Enabling back the solider collider that we disabled earlier
         itemToBeConstructed.GetComponent<Constructable>().solidCollider.enabled = true;
 
-        //Adding all the ghosts of this item into the manager's ghost bank
-        GetAllGhosts(itemToBeConstructed);
-        PerformGhostDeletionScan();
+        // Setting the default color/material
+        itemToBeConstructed.GetComponent<Constructable>().SetDefaultColor();
+        
 
+        if(itemToBeConstructed.name == "FoundationModel")
+        {
+            // Making the Ghost Children to no longer be children of this item
+            itemToBeConstructed.GetComponent<Constructable>().ExtractGhostMembers();
+            itemToBeConstructed.tag = "placedFoundation";
+            GetAllGhosts(itemToBeConstructed);
+            PerformGhostDeletionScan();
+        }
+        else
+        {
+            itemToBeConstructed.tag = "placedWall";
+            DestroyItem(selectedGhost);
+        }
+            //Adding all the ghosts of this item into the manager's ghost bank
         itemToBeConstructed = null;
-
         inConstructionMode = false;
     }
 

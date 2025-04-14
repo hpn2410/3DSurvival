@@ -18,10 +18,10 @@ public class CraftingSystem : MonoBehaviour
     private Button toolsBtn, survivalBtn, refineBtn, buildingBtn;
 
     //Craft Button
-    private Button craftAxeBtn, craftPlankBtn, craftFoundationBtn;
+    private Button craftAxeBtn, craftPlankBtn, craftFoundationBtn, craftWallBtn;
 
     //Requirement Text;
-    private TextMeshProUGUI axeReq1, axeReq2, plankReq1, foundationReq1;
+    private TextMeshProUGUI axeReq1, axeReq2, plankReq1, foundationReq1, wallReq1;
 
     public bool isOpen;
 
@@ -32,6 +32,7 @@ public class CraftingSystem : MonoBehaviour
     public BluePrint axeBluePrint;
     public BluePrint plankBluePrint;
     public BluePrint foundationBluePrint;
+    public BluePrint wallBluePrint;
 
     private void Awake()
     {
@@ -88,6 +89,15 @@ public class CraftingSystem : MonoBehaviour
             .transform.Find("Craft_Foundation_Button").GetComponent<Button>();
 
         craftFoundationBtn.onClick.AddListener(delegate { CraftAnyItem(foundationBluePrint); });
+
+        // wallBluePrint
+        wallReq1 = buildingScreenUI.transform.Find("Wall").transform.Find("Req1").GetComponent<TextMeshProUGUI>();
+
+        craftWallBtn = buildingScreenUI.transform.Find("Wall")
+            .transform.Find("Craft_Wall_Button").GetComponent<Button>();
+
+        Debug.Log("wall: " + craftWallBtn);
+        craftWallBtn.onClick.AddListener(delegate { CraftAnyItem(wallBluePrint); });
     }
 
     private void CraftAnyItem(BluePrint bluePrintToCraft)
@@ -166,6 +176,7 @@ public class CraftingSystem : MonoBehaviour
         int stickCount = 0;
         int logCount = 0;
         int plankCount = 0;
+        int wallCount = 0;
 
         inventoryItemLists = InventorySystem.Instance.itemLists;
 
@@ -184,6 +195,9 @@ public class CraftingSystem : MonoBehaviour
                     break;
                 case "Plank":
                     plankCount += 1;
+                    break;
+                case "Wall":
+                    wallCount += 1;
                     break;
             }
 
@@ -204,13 +218,25 @@ public class CraftingSystem : MonoBehaviour
             else
                 craftPlankBtn.gameObject.SetActive(false);
 
-            // --------- Foundation ---------- //
+            // --------- Foundation and Wall ---------- //
             foundationReq1.text = "4 Plank[" + plankCount + "]";
-
-            if (plankCount >= 4 && InventorySystem.Instance.CheckSlotsAvailable(4))
+            
+            if(plankCount >= 4 && InventorySystem.Instance.CheckSlotsAvailable(1))
+            {
                 craftFoundationBtn.gameObject.SetActive(true);
+            }
             else
+            {
                 craftFoundationBtn.gameObject.SetActive(false);
+            }
+
+            // --------- Wall ---------- //
+            wallReq1.text = "2 Plank[" + plankCount + "]";
+
+            if (plankCount >= 2 && InventorySystem.Instance.CheckSlotsAvailable(1))
+                craftWallBtn.gameObject.SetActive(true);
+            else
+                craftWallBtn.gameObject.SetActive(false);
         }
     }
 
