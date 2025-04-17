@@ -842,6 +842,8 @@ GameObject:
   - component: {fileID: 7093711852802082630}
   - component: {fileID: 7936846884634835255}
   - component: {fileID: 6207394224620253341}
+  - component: {fileID: 3522265624235757716}
+  - component: {fileID: 8008951319226437249}
   m_Layer: 0
   m_Name: Rabbit_Brown
   m_TagString: Untagged
@@ -857,7 +859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8164774166141104915}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.63909376, z: -0, w: 0.76912886}
+  m_LocalRotation: {x: 0, y: 0.63909674, z: 0, w: 0.7691264}
   m_LocalPosition: {x: 6.4759674, y: -1.3122325, z: 25.14478}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -966,6 +968,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   playerInRange: 0
+--- !u!114 &3522265624235757716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164774166141104915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73627a6c5b0ca5146b7d9e4a76a95b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalData: {fileID: 11400000, guid: 321de5ae469081142a10453811af0fd1, type: 2}
+--- !u!65 &8008951319226437249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164774166141104915}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8255834255989130349
 GameObject:
   m_ObjectHideFlags: 0

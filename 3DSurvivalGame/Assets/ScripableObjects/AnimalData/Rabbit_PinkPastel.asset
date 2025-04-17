@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e016db648c5b137479d3ceeea84a8a8b, type: 3}
-  m_Name: Tree_Data
+  m_Script: {fileID: 11500000, guid: dcd4c3a6da733ac4890051e831c42a29, type: 3}
+  m_Name: Rabbit_PinkPastel
   m_EditorClassIdentifier: 
-  m_TreeMaxHealth: 10
-  m_TreeCurrentHealth: 10
-  m_TreeGetHitDamage: 2
-  m_StaminaSpentForChopping: 10
+  animalName: Rabbit_Pink
+  playerInRange: 1
+  canBeHit: 1
+  currentHealth: -5
+  maxHealth: 40

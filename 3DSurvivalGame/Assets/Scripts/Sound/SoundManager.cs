@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource pickUpItemSound;
     public AudioSource toolSwingSound;
     public AudioSource chopSound;
+    public AudioSource rabbitHit;
     [Header("Music Effect")]
     public AudioSource startGameBGMusic;
 

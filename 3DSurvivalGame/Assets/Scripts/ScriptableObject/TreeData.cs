@@ -7,6 +7,7 @@ using UnityEngine;
 public class TreeData : ScriptableObject
 {
     [Header("Tree Data")]
+    public string m_TreeName;
     public int m_TreeMaxHealth;
     public int m_TreeCurrentHealth;
     public int m_TreeGetHitDamage;

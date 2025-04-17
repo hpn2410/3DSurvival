@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a327000ddee198408748a12a9f53240, type: 3}
+      propertyPath: m_TagString
+      value: AxeModel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82,6 +86,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a327000ddee198408748a12a9f53240, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5882310389388374238}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a327000ddee198408748a12a9f53240, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2317221738350809678}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a327000ddee198408748a12a9f53240, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8613744172264097824}
   m_SourcePrefab: {fileID: 100100000, guid: 9a327000ddee198408748a12a9f53240, type: 3}
 --- !u!1 &8951729496983488800 stripped
 GameObject:
@@ -122,3 +132,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canHit: 0
+--- !u!114 &2317221738350809678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951729496983488800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e49765868ec604db8c6d84b1e24fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponData: {fileID: 11400000, guid: d678c2af72acd9148af13ce9350a689d, type: 2}
+--- !u!64 &8613744172264097824
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951729496983488800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8176984191909879101, guid: 9a327000ddee198408748a12a9f53240, type: 3}

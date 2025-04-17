@@ -503,6 +503,8 @@ GameObject:
   - component: {fileID: 5795157432587990435}
   - component: {fileID: 7412584385176553420}
   - component: {fileID: 4472405547756316010}
+  - component: {fileID: 611791892087325179}
+  - component: {fileID: 1214173025780635329}
   m_Layer: 0
   m_Name: Rabbit_Pink_Pastel
   m_TagString: Untagged
@@ -518,7 +520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3999977370433272487}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.09490595, z: -0, w: 0.99548626}
+  m_LocalRotation: {x: 0, y: 0.09490757, z: 0, w: 0.99548614}
   m_LocalPosition: {x: 10.942036, y: -1.3122325, z: 6.4828796}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -595,8 +597,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5536924, y: 0.71010107, z: 1.0380461}
-  m_Center: {x: -0.0029949844, y: 0.2979472, z: 0.06270826}
+  m_Size: {x: 0.5329273, y: 0.63904697, z: 0.8917036}
+  m_Center: {x: 0.006513882, y: 0.26968464, z: 0.1416055}
 --- !u!114 &7412584385176553420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,6 +629,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   playerInRange: 0
+--- !u!114 &611791892087325179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999977370433272487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73627a6c5b0ca5146b7d9e4a76a95b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalData: {fileID: 11400000, guid: 50f98fad525f5174aa3f86a7ef3fee0f, type: 2}
+--- !u!65 &1214173025780635329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999977370433272487}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 3}
+  m_Center: {x: 0.013120385, y: 0.34865713, z: 0.11097553}
 --- !u!1 &4599559195229939460
 GameObject:
   m_ObjectHideFlags: 0

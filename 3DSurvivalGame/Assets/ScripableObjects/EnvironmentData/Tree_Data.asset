@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65084d00c50232d4e82461178e974336, type: 3}
-  m_Name: Axe
+  m_Script: {fileID: 11500000, guid: e016db648c5b137479d3ceeea84a8a8b, type: 3}
+  m_Name: Tree_Data
   m_EditorClassIdentifier: 
-  itemName: Axe
-  req1: Stone
-  req2: Stick
-  amountReq1: 3
-  amountReq2: 3
-  totalReq: 2
-  numberProducedItems: 1
+  m_TreeName: Tree
+  m_TreeMaxHealth: 10
+  m_TreeCurrentHealth: 10
+  m_TreeGetHitDamage: 2
+  m_StaminaSpentForChopping: 10

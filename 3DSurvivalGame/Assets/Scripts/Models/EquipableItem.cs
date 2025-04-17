@@ -36,10 +36,16 @@ public class EquipableItem : MonoBehaviour
             && !ConstructionManager.Instance.inConstructionMode)
         {
             GameObject selectedTree = SelectionManager.Instance.selectedTree;
+            GameObject selectedAnimal = SelectionManager.Instance.selectedAnimal;
             if (selectedTree != null)
             {
                 selectedTree.GetComponent<ChopableObject>().GetHit();
                 SoundManager.Instance.PlaySound(SoundManager.Instance.chopSound);
+            }
+            if(selectedAnimal != null)
+            {
+                selectedAnimal.GetComponent<Animal>().GetHit();
+                SoundManager.Instance.PlaySound(SoundManager.Instance.rabbitHit);
             }
             animatorItem.SetTrigger("Hit");
             SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);

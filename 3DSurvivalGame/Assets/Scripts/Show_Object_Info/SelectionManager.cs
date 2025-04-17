@@ -14,7 +14,10 @@ public class SelectionManager : MonoBehaviour
     public Image centerDotIcon;
     public Image handIcon;
     public GameObject selectedTree;
+    public GameObject selectedAnimal;
     public GameObject chopHolder;
+    public TextMeshProUGUI chopHolderText;
+    public bool isReadyToHit = false;
 
     // Design pattern (Singleton)
     public static SelectionManager Instance { get; set; }
@@ -46,6 +49,28 @@ public class SelectionManager : MonoBehaviour
 
             InteractableObject interactableObject = selectionTransform.GetComponent<InteractableObject>();
 
+            Animal animal = selectionTransform.GetComponent<Animal>();
+            if (animal && animal.animalData.playerInRange)
+            {
+                interaction_text.text = animal.animalData.animalName;
+                animal.animalData.canBeHit = true;
+                selectedAnimal = animal.gameObject;
+                chopHolder.gameObject.SetActive(true);
+                chopHolderText.text = animal.animalData.animalName;
+                cursorTarget = true;
+            }
+            else
+            {
+                if(selectedAnimal != null)
+                {
+                    selectedAnimal.gameObject.GetComponent<Animal>().animalData.canBeHit = false;
+                    selectedAnimal = null;
+                    cursorTarget = false;
+                    chopHolder.gameObject.SetActive(false);
+                }
+                interaction_text.text = "";
+            }
+
             ChopableObject choppableTree = selectionTransform.GetComponent<ChopableObject>();
 
             if (choppableTree && choppableTree.playerInRange)
@@ -53,6 +78,7 @@ public class SelectionManager : MonoBehaviour
                 choppableTree.canBeDropped = true;
                 selectedTree = choppableTree.gameObject;
                 chopHolder.gameObject.SetActive(true);
+                chopHolderText.text = choppableTree.m_TreeData.m_TreeName;
                 cursorTarget = true;
             }
             else
@@ -104,6 +130,13 @@ public class SelectionManager : MonoBehaviour
             handIcon.gameObject.SetActive(false);
             centerDotIcon.gameObject.SetActive(true);
         }
+    }
+
+    IEnumerator DealDamageTo(Animal animal, float delay, int damage)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.LogWarning(damage);
+        animal.TakeDamage(damage);
     }
 
     public void DisableSelection()

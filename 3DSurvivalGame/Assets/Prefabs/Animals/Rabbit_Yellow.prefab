@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 7297805011211130614}
   - component: {fileID: 7203169150204299243}
   - component: {fileID: 5473974957689745686}
+  - component: {fileID: 6754497960881334445}
+  - component: {fileID: 7050422885924200423}
   m_Layer: 0
   m_Name: Rabbit_Yellow
   m_TagString: Untagged
@@ -61,7 +63,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999686616547342151}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.34120136, z: -0, w: 0.9399903}
+  m_LocalRotation: {x: 0, y: 0.3412, z: 0, w: 0.93999076}
   m_LocalPosition: {x: 11.923096, y: -1.3122325, z: 2.2807865}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -170,6 +172,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 
   playerInRange: 0
+--- !u!114 &6754497960881334445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999686616547342151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73627a6c5b0ca5146b7d9e4a76a95b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animalData: {fileID: 11400000, guid: 99c18677c7075d24ba529212343bad4d, type: 2}
+--- !u!65 &7050422885924200423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999686616547342151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1437740038456287365
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +451,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1982b024409ba3d48bed2fc4433eb8f6, type: 2}
+  - {fileID: 2100000, guid: 44aeac99c55cff6438b231d9de702900, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

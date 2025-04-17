@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65084d00c50232d4e82461178e974336, type: 3}
-  m_Name: Foundation
+  m_Name: Plank_BluePrint
   m_EditorClassIdentifier: 
-  itemName: Foundation
-  req1: Plank
+  itemName: Plank
+  req1: Log
   req2: 
-  amountReq1: 4
+  amountReq1: 1
   amountReq2: 0
   totalReq: 1
-  numberProducedItems: 1
+  numberProducedItems: 2
