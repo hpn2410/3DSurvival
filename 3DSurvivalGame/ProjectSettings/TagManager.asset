@@ -17,6 +17,7 @@ TagManager:
   - wallGhost
   - placedWall
   - AxeModel
+  - Enemy
   layers:
   - Default
   - TransparentFX

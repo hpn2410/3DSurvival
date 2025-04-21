@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Axe_Weapon
   m_EditorClassIdentifier: 
   weaponDamage: 15
+  attackRange: 10

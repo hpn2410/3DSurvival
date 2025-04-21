@@ -93,4 +93,14 @@ public class Player_State : MonoBehaviour
     {
         currentStamina = stamina;
     }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Debug.LogWarning("You are dead");
+        }
+    }
 }
