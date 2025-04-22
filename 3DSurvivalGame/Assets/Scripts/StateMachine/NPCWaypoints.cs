@@ -29,7 +29,7 @@ public class NPCWaypoints : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 18f); // Start Chasing Distance
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 21f); // Stop Chasing Distance
+        Gizmos.DrawWireSphere(transform.position, 25f); // Stop Chasing Distance
     }
 
     public void TryAttack()

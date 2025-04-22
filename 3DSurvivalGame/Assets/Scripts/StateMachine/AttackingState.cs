@@ -27,7 +27,7 @@ public class AttackingState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            LookAtPlayer();
+        LookAtPlayer();
 
         if (stateInfo.normalizedTime < 1f) return;
 
