@@ -22,10 +22,8 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        //Application.Quit();
+        Application.Quit();
         Debug.LogWarning("Quit Game");
-
-        EditorApplication.isPlaying = false;
 
     }
 
