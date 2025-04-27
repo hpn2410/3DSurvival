@@ -6,10 +6,22 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     public AnimalData animalData;
+    private Animator animator;
+
+    public ParticleSystem hitParticleSystem;
+    public Renderer rend;
+
+    float flashDuration = .3f;
+    float brightnessMultiplier = 2f;
+    Color originalColor;
 
     private void Start()
     {
         animalData.currentHealth = animalData.maxHealth;
+        animator = GetComponent<Animator>();
+        originalColor = rend.material.color;
+
+        //hitParticleSystem.Stop();
     }
 
     private void Update()
@@ -26,9 +38,21 @@ public class Animal : MonoBehaviour
         animalData.currentHealth -= damage;
         if (animalData.currentHealth <= 0)
         {
+            GetComponent<AiMovement>().enabled = false;
+
             Debug.LogWarning("This animal is dead");
-            Destroy(gameObject);
+
+            StartCoroutine(AnimalDead());
         }
+    }
+
+    private IEnumerator AnimalDead()
+    {
+        animator.SetTrigger("isDead");
+
+        yield return new WaitForSeconds(1.3f);
+
+        Destroy(gameObject);
     }
 
 
@@ -53,9 +77,19 @@ public class Animal : MonoBehaviour
         StartCoroutine(HitDelay());
     }
 
+    IEnumerator FlashRoutine()
+    {
+        rend.material.color = originalColor * brightnessMultiplier;
+
+        yield return new WaitForSeconds(flashDuration);
+
+        rend.material.color = originalColor;
+    }
+
     private IEnumerator HitDelay()
     {
         EquipableItem.Instance.canHit = false;
+        hitParticleSystem.Play();
         yield return new WaitForSeconds(0.65f);
         animalData.currentHealth -= EquipSystem.Instance.GetWeaponDamage();
         Debug.LogWarning("being hit, hp left: " + animalData.currentHealth);
@@ -64,9 +98,11 @@ public class Animal : MonoBehaviour
         if (animalData.currentHealth <= 0)
         {
             Debug.LogWarning("This animal is dead");
-            Destroy(gameObject);
+            
             SelectionManager.Instance.selectedAnimal = null;
             SelectionManager.Instance.chopHolder.gameObject.SetActive(false);
+
+            StartCoroutine(AnimalDead());
         }
             
     }

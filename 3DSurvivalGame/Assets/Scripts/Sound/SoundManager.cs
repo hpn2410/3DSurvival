@@ -11,6 +11,12 @@ public class SoundManager : MonoBehaviour
     public AudioSource toolSwingSound;
     public AudioSource chopSound;
     public AudioSource rabbitHit;
+    public AudioSource playerHit;
+    public AudioSource playerDeath;
+    public AudioSource bearHit;
+    public AudioSource bearDead;
+    public AudioSource bossHurt;
+    public AudioSource bossDead;
     [Header("Music Effect")]
     public AudioSource startGameBGMusic;
 

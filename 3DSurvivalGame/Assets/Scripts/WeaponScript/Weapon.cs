@@ -7,9 +7,12 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData WeaponData;
     bool isEnemy;
+    bool isBoss;
     float distanceWithEnemy;
+    float distanceWithBoss;
     Transform player;
     Transform enemy;
+    Transform boss;
 
     private void Start()
     {
@@ -25,16 +28,32 @@ public class Weapon : MonoBehaviour
             distanceWithEnemy = Vector3.Distance(collision.transform.position, transform.position);
             enemy = collision.transform;
         }
+
+        if(collision.collider.CompareTag("Boss"))
+        {
+            isBoss = true;
+            distanceWithBoss = Vector3.Distance(collision.transform.position, transform.position);
+            boss = collision.transform;
+        }
     }
 
     public void DealDamage()
     {
-        if (isEnemy && distanceWithEnemy < WeaponData.attackRange)
+        if (isEnemy && distanceWithEnemy <= WeaponData.attackRange)
         {
             enemy.GetComponent<NPCWaypoints>().TakeDamage(WeaponData.weaponDamage);
 
             isEnemy = false;
             enemy = null;
+        }
+
+        if (isBoss && distanceWithEnemy <= WeaponData.attackRange)
+        {
+            Debug.LogWarning(WeaponData.attackRange);
+            boss.GetComponent<BossAttackSkillManager>().TakeDamage(WeaponData.weaponDamage);
+
+            isBoss = false;
+            boss = null;
         }
     }
 }

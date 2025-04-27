@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbc1812d4ce7e64ca1fb1255ca4a3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!225 &3698288103626403656
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -125,3 +126,4 @@ MonoBehaviour:
   isEquipable: 1
   isInsideQuickSlot: 0
   isSelected: 0
+  isUseAble: 0

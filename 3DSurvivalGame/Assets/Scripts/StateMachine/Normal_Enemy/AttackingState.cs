@@ -27,6 +27,15 @@ public class AttackingState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (Player_State.Instance.isPlayerDead)
+        {
+            animator.SetBool("IsPlayerDead", true);
+        }
+        else
+        {
+            animator.SetBool("IsPlayerDead", false);
+        }
+
         LookAtPlayer();
 
         if (stateInfo.normalizedTime < 1f) return;
@@ -39,6 +48,7 @@ public class AttackingState : StateMachineBehaviour
 
             if (distanceFromPlayer > stopAttackingDistance)
             {
+                Debug.LogWarning("false");
                 animator.SetBool("isAttacking", false);
             }
             else
@@ -46,20 +56,6 @@ public class AttackingState : StateMachineBehaviour
                 animator.Play(stateInfo.fullPathHash, layerIndex, 0f);
             }
         }
-
-        // ----- Check if agent should stop attacking ----- //
-        //float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
-
-        //if (distanceFromPlayer > stopAttackingDistance)
-        //{
-        //    animator.SetBool("isAttacking", false);
-        //}
-
-        //if (Time.time > lastAttackTime + attackCooldown)
-        //{
-        //    animator.Play(stateInfo.fullPathHash, layerIndex, 0f); // Replay current attack animation
-        //    lastAttackTime = Time.time;
-        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -67,20 +63,6 @@ public class AttackingState : StateMachineBehaviour
     {
         agent.SetDestination(agent.transform.position);
     }
-
-    //public void TryAttack()
-    //{
-    //    float distance = Vector3.Distance(player.position, agent.transform.position);
-
-    //    if (distance <= attackRange)
-    //    {
-    //        Player_State.Instance.TakeDamage(agent.GetComponent<NPCWaypoints>().enemyData.enemyDamage);
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Dogde");
-    //    }
-    //}
 
     private void LookAtPlayer()
     {
@@ -90,16 +72,4 @@ public class AttackingState : StateMachineBehaviour
         var yRotation = agent.transform.eulerAngles.y;
         agent.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }

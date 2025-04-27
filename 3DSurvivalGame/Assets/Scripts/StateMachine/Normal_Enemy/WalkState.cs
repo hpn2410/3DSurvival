@@ -39,6 +39,15 @@ public class WalkState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (Player_State.Instance.isPlayerDead)
+        {
+            animator.SetBool("IsPlayerDead", true);
+        }
+        else
+        {
+            animator.SetBool("IsPlayerDead", false);
+        }
+
         // -------- Move to each waypoints -------- //
         if (agent.remainingDistance <= agent.stoppingDistance)
         {

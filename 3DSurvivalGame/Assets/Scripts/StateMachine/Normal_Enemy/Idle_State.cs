@@ -19,8 +19,19 @@ public class Idle_State : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // -------- Transition to Walk State -------- //
-        timer += Time.deltaTime;
+        if(Player_State.Instance.isPlayerDead)
+        {
+            animator.SetBool("IsPlayerDead", true);
+            animator.SetBool("isAttacking", false);
+            animator.SetBool("isChasing", false);
+        }
+        else
+        {
+            animator.SetBool("IsPlayerDead", false);
+        }
+
+            // -------- Transition to Walk State -------- //
+            timer += Time.deltaTime;
         if (timer > idle_Time)
         {
             animator.SetBool("isWalking", true);
