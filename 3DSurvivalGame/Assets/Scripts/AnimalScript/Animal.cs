@@ -9,10 +9,15 @@ public class Animal : MonoBehaviour
 
     public ParticleSystem hitParticleSystem;
     public Renderer rend;
+    public bool playerInRange;
+    public bool canBeHit;
 
     float flashDuration = .3f;
     float brightnessMultiplier = 2f;
     Color originalColor;
+
+    float currentHeath = 0;
+    float maxHeath = 30;
 
     private void Start()
     {
@@ -20,22 +25,24 @@ public class Animal : MonoBehaviour
         animator = GetComponent<Animator>();
         originalColor = rend.material.color;
 
+
+        currentHeath = maxHeath;
         //hitParticleSystem.Stop();
     }
 
     private void Update()
     {
-        if (animalData.canBeHit)
+        if (canBeHit)
         {
-            GlobalState.Instance.resourcesHeath = animalData.currentHealth;
-            GlobalState.Instance.resourcesMaxHeath = animalData.maxHealth;
+            GlobalState.Instance.resourcesHeath = currentHeath;
+            GlobalState.Instance.resourcesMaxHeath = maxHeath;
         }
     }
 
     public void TakeDamage(int damage)
     {
-        animalData.currentHealth -= damage;
-        if (animalData.currentHealth <= 0)
+        currentHeath -= damage;
+        if (currentHeath <= 0)
         {
             GetComponent<AiMovement>().enabled = false;
 
@@ -59,7 +66,7 @@ public class Animal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animalData.playerInRange = true;
+            playerInRange = true;
         }
     }
 
@@ -67,7 +74,7 @@ public class Animal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animalData.playerInRange = false;
+            playerInRange = false;
         }
     }
 
@@ -90,11 +97,11 @@ public class Animal : MonoBehaviour
         EquipableItem.Instance.canHit = false;
         hitParticleSystem.Play();
         yield return new WaitForSeconds(0.65f);
-        animalData.currentHealth -= EquipSystem.Instance.GetWeaponDamage();
-        Debug.LogWarning("being hit, hp left: " + animalData.currentHealth);
+        currentHeath -= EquipSystem.Instance.GetWeaponDamage();
+        Debug.LogWarning("being hit, hp left: " + currentHeath);
         EquipableItem.Instance.canHit = true;
 
-        if (animalData.currentHealth <= 0)
+        if (currentHeath <= 0)
         {
             Debug.LogWarning("This animal is dead");
             

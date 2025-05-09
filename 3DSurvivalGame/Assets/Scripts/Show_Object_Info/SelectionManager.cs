@@ -50,10 +50,10 @@ public class SelectionManager : MonoBehaviour
             InteractableObject interactableObject = selectionTransform.GetComponent<InteractableObject>();
 
             Animal animal = selectionTransform.GetComponent<Animal>();
-            if (animal && animal.animalData.playerInRange)
+            if (animal && animal.playerInRange)
             {
                 interaction_text.text = animal.animalData.animalName;
-                animal.animalData.canBeHit = true;
+                animal.canBeHit = true;
                 selectedAnimal = animal.gameObject;
                 chopHolder.gameObject.SetActive(true);
                 chopHolderText.text = animal.animalData.animalName;
@@ -63,7 +63,7 @@ public class SelectionManager : MonoBehaviour
             {
                 if(selectedAnimal != null)
                 {
-                    selectedAnimal.gameObject.GetComponent<Animal>().animalData.canBeHit = false;
+                    selectedAnimal.gameObject.GetComponent<Animal>().canBeHit = false;
                     selectedAnimal = null;
                     cursorTarget = false;
                     chopHolder.gameObject.SetActive(false);
