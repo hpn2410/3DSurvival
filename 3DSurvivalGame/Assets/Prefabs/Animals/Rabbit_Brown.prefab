@@ -10654,8 +10654,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5329273, y: 0.69928783, z: 0.8917036}
-  m_Center: {x: -0.0322215, y: 0.26268175, z: 0.06996261}
+  m_Size: {x: 0.5329273, y: 0.5854661, z: 0.8917036}
+  m_Center: {x: -0.0322215, y: 0.31959262, z: 0.06996261}
 --- !u!114 &7936846884634835255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10701,6 +10701,9 @@ MonoBehaviour:
   animalData: {fileID: 11400000, guid: 321de5ae469081142a10453811af0fd1, type: 2}
   hitParticleSystem: {fileID: 4849385184072702018}
   rend: {fileID: 8423587252015055649}
+  playerInRange: 0
+  canBeHit: 0
+  meatSpawn: {fileID: 992346904060318098, guid: e6e210cd30e4a7f4f8e3b7c004b35b4b, type: 3}
 --- !u!65 &8008951319226437249
 BoxCollider:
   m_ObjectHideFlags: 0

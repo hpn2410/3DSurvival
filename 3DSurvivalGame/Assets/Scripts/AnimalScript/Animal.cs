@@ -11,6 +11,7 @@ public class Animal : MonoBehaviour
     public Renderer rend;
     public bool playerInRange;
     public bool canBeHit;
+    public GameObject meatSpawn;
 
     float flashDuration = .3f;
     float brightnessMultiplier = 2f;
@@ -58,6 +59,7 @@ public class Animal : MonoBehaviour
 
         yield return new WaitForSeconds(1.3f);
 
+        Instantiate(meatSpawn, animator.transform.position, animator.transform.rotation);
         Destroy(gameObject);
     }
 
