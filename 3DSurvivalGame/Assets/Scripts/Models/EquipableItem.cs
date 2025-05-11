@@ -50,5 +50,10 @@ public class EquipableItem : MonoBehaviour
             animatorItem.SetTrigger("Hit");
             SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);
         }
+
+        if(Player_State.Instance.isPlayerDead)
+            animatorItem.SetBool("IsPlayerDead", true);
+        else
+            animatorItem.SetBool("IsPlayerDead", false);
     }
 }
