@@ -47,8 +47,12 @@ public class EquipableItem : MonoBehaviour
                 selectedAnimal.GetComponent<Animal>().GetHit();
                 SoundManager.Instance.PlaySound(SoundManager.Instance.rabbitHit);
             }
-            animatorItem.SetTrigger("Hit");
-            SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);
+
+            if (!ConstructionManager.Instance.isValidPlacement)
+            {
+                animatorItem.SetTrigger("Hit");
+                SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);
+            }
         }
 
         if(Player_State.Instance.isPlayerDead)
