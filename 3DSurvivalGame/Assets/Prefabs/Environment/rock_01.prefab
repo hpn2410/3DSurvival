@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Stone
+  pressToPickUp: <br>Press E To Pick Up
   playerInRange: 0
 --- !u!65 &7046767730476639225
 BoxCollider:

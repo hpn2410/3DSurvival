@@ -12,6 +12,7 @@ public class ConstructionManager : MonoBehaviour
     public GameObject constructionHoldingSpot;
 
     public bool isValidPlacement;
+    public bool isAllowSwingAxe = true;
 
     public bool selectingAGhost;
     public GameObject selectedGhost;
@@ -55,6 +56,7 @@ public class ConstructionManager : MonoBehaviour
 
         // Actiavting Construction mode
         inConstructionMode = true;
+        isAllowSwingAxe = false;
     }
 
     private void GetAllGhosts(GameObject itemToBeConstructed)
@@ -212,6 +214,7 @@ public class ConstructionManager : MonoBehaviour
             DestroyItem(itemToBeConstructed);
             itemToBeConstructed = null;
             inConstructionMode = false;
+            isAllowSwingAxe = true;
         }
     }
 
@@ -257,6 +260,7 @@ public class ConstructionManager : MonoBehaviour
             //Adding all the ghosts of this item into the manager's ghost bank
         itemToBeConstructed = null;
         inConstructionMode = false;
+        isAllowSwingAxe = true;
     }
 
     private void DestroyItem(GameObject item) 
@@ -288,6 +292,7 @@ public class ConstructionManager : MonoBehaviour
         itemToBeConstructed = null;
 
         inConstructionMode = false;
+        isAllowSwingAxe = true;
     }
 
     private bool CheckValidConstructionPosition()

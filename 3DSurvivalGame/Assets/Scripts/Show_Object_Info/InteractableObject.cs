@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
     public string itemName;
+    public string pressToPickUp;
     public bool playerInRange;
 
     public string GetItemName()

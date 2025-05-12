@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player_State : MonoBehaviour
@@ -22,6 +23,7 @@ public class Player_State : MonoBehaviour
     public GameObject playerGameObject;
     public bool isPlayerDead;
     public GameObject deadCanvas;
+    public TextMeshProUGUI deadCountDown;
 
     private bool isThristy;
     CharacterController characterController;
@@ -147,7 +149,14 @@ public class Player_State : MonoBehaviour
         playerMouseMovement.enabled = false;
         playerMovement.enabled = false;
         deadCanvas.SetActive(true);
-        yield return new WaitForSeconds(10f);
+
+        int countdown = 10;
+        while (countdown > 0)
+        {
+            deadCountDown.text = "You Are Dead!!! Wait To Respawn<br>" + countdown.ToString() + "s";
+            yield return new WaitForSeconds(1f);
+            countdown--;
+        }
 
         // Respawn
         transform.position = respawnPosition.position;

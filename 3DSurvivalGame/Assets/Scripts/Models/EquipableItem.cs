@@ -48,7 +48,7 @@ public class EquipableItem : MonoBehaviour
                 SoundManager.Instance.PlaySound(SoundManager.Instance.rabbitHit);
             }
 
-            if (!ConstructionManager.Instance.isValidPlacement)
+            if (ConstructionManager.Instance.itemToBeDestroyed == null)
             {
                 animatorItem.SetTrigger("Hit");
                 SoundManager.Instance.PlaySound(SoundManager.Instance.toolSwingSound);

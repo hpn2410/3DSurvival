@@ -99,7 +99,7 @@ public class SelectionManager : MonoBehaviour
                 cursorTarget = true;
                 selectedObject = interactableObject.gameObject;
 
-                interaction_text.text = interactableObject.GetItemName();
+                interaction_text.text = interactableObject.GetItemName() + interactableObject.pressToPickUp;
                 hover_Item_Info.SetActive(true);
 
                 if(interactableObject.CompareTag("Pickable"))

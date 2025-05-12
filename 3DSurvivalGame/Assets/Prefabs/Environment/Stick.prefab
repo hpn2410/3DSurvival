@@ -141,4 +141,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Stick
+  pressToPickUp: <br>Press E To Pick Up
   playerInRange: 0
